@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """This module contains the BaseModel class."""
 from datetime import datetime
-from models import storage
 import uuid
 
 
