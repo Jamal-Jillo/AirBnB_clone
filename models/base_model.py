@@ -2,6 +2,7 @@
 """This module contains the BaseModel class."""
 from datetime import datetime
 import uuid
+from models import storage
 
 
 class BaseModel:
@@ -22,6 +23,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """__str__ method to print a string representation of the class."""
@@ -31,6 +33,7 @@ class BaseModel:
     def save(self):
         """Save method to update the public instance attribute updated_at."""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """to_dict method to return a dictionary containing all keys/values."""
