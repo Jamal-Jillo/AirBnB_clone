@@ -11,3 +11,5 @@ Command interpreter to manage your AirBnB objects.
         Do operations on objects (count, compute stats, etc…)
         Update attributes of an object
         Destroy an object
+
+*importing packages/modules have been a pain in the ass!!*

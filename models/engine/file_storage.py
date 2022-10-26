@@ -29,7 +29,7 @@ class FileStorage:
         # for key in self.__objects:
         #    data[key] = self.__objects[key].to_dict()
         with open(self.__file_path, 'w') as jsonfile:
-            json.dump(data, jsonfile)
+            json.dump(data, jsonfile, indent=4)
 
     def reload(self):
         """ Deserializes the JSON file to __objects(only if the JSON file
