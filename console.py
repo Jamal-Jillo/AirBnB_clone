@@ -52,10 +52,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-# ? Update this later
     def help_create(self):
         """Help for create command."""
-        print("Create a new instance of a BaseModel")
+        print("Create new instances of a class by using the <create> command\n\
+            >>> create <class name>")
 
     def do_show(self, arg):
         """Print the string representation of an instance."""
@@ -80,7 +80,8 @@ class HBNBCommand(cmd.Cmd):
 # ? Update this later
     def help_show(self):
         """Help for show command."""
-        print("Print the string representation of an instance")
+        print("Get the string representation of an instance\n\
+            >>> show <class name> <id>")
 
     def do_destroy(self, arg):
         """Delete an instance based on the class name and id."""
@@ -102,10 +103,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-# ? Update this later
     def help_destroy(self):
         """Help for destroy command."""
-        print("Delete an instance based on the class name and id")
+        print("Delete an instance based on the class name and id\n\
+            >>> destroy <class name> <id>")
 
     def do_all(self, arg):
         """Print all string representation of all instances."""
@@ -128,10 +129,10 @@ class HBNBCommand(cmd.Cmd):
                 if i == len(obj_dict) - 1:
                     break
 
-# ? Update this later
     def help_all(self):
         """Help for all command."""
-        print("Print all string representation of all instances")
+        print("Print the string representation of all instances\n\
+            >>> all <class name>")
 
     def do_update(self, arg):
         """

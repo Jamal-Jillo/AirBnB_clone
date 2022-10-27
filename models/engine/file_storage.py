@@ -4,6 +4,7 @@ import json
 from os.path import exists
 from textwrap import indent
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
