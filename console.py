@@ -4,8 +4,9 @@ import cmd
 import models
 import shlex  # For splitting arguments passed
 from models.base_model import BaseModel
+from models.user import User
 
-classes = {"BaseModel": BaseModel}  # Does not auto-update - need to fix
+classes = {"BaseModel": BaseModel, "User": User}  # Dictionary of classes
 
 
 class HBNBCommand(cmd.Cmd):
@@ -39,15 +40,17 @@ class HBNBCommand(cmd.Cmd):
         """Empty line + ENTER shouldn’t execute anything."""
         pass
 
-    def do_create(self, args):
+    def do_create(self, arg):
         """Create a new instance of a BaseModel."""
-        if args == "":
+        args = shlex.split(arg)
+        if len(args) == 0:
             print("** class name missing **")
-        elif args != "BaseModel":
-            print("** class doesn't exist **")
-        else:
-            print(BaseModel().id)
+            return False
+        if args[0] in classes:
+            print(eval(args[0])().id)
             models.storage.save()
+        else:
+            print("** class doesn't exist **")
 
 # ? Update this later
     def help_create(self):
