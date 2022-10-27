@@ -7,6 +7,8 @@ import models
 
 class BaseModel:
     """
+    summary line.
+
     This class will define all common.
     attributes/methods for other classes.
     """
