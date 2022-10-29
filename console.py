@@ -56,6 +56,7 @@ class HBNBCommand(cmd.Cmd):
         if args[0] in classes:
             print(eval(args[0])().id)
             models.storage.save()
+            print("** Created successfully! **")
         else:
             print("** class doesn't exist **")
 
@@ -102,6 +103,7 @@ class HBNBCommand(cmd.Cmd):
                 if key in models.storage.all():
                     del models.storage.all()[key]
                     models.storage.save()
+                    print("** Deleted successfully! **")
                 else:
                     print("** no instance found **")
             else:
@@ -160,6 +162,7 @@ class HBNBCommand(cmd.Cmd):
                             setattr(models.storage.all()[key], args[2],
                                     args[3])
                             models.storage.save()
+                            print("** Updated successfully! **")
                         else:
                             print("** value missing **")
                     else:
@@ -170,6 +173,12 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
+    def help_update(self):
+        """Help for update command."""
+        print("Update an instance based on the class name and id")
+        print(">> update <class name> <id> <attribute name> <attribute value>")
+        print("Example: update User 1234-1234-1234 email user@email.com")
 
     def default(self, line):
         """Accept class name followed by command."""
@@ -183,6 +192,14 @@ class HBNBCommand(cmd.Cmd):
             command = args1[0]
             if command == "all":
                 self.do_all(class_args)
+            elif command == "count":
+                self.do_count(class_args)
+            elif command == "show":
+                self.do_show(class_args + " " + args1[1][:-1])
+            elif command == "destroy":
+                self.do_destroy(class_args + " " + args1[1][:-1])
+            elif command == "update":  # -- Doesn't work!!
+                self.do_update(class_args + " " + args1[1][:-1])
             else:
                 pass
         except IndexError:
@@ -194,6 +211,21 @@ class HBNBCommand(cmd.Cmd):
         print("Accept class name followed by command")
         print(">>> <class name>.<command>")
         print("Example: BaseModel.all()")
+
+    def do_count(self, arg):
+        """Count the number of instances of a class."""
+        if arg in classes:
+            count = 0
+            for obj in models.storage.all().values():
+                if arg == obj.__class__.__name__:
+                    count += 1
+            print(count)
+
+    def help_count(self):
+        """Help for count command."""
+        print("Count the number of instances of a class")
+        print(">>> <class name>.count()")
+        print("Example: BaseModel.count()")
 
 
 if __name__ == '__main__':
