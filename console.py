@@ -84,7 +84,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-# ? Update this later
     def help_show(self):
         """Help for show command."""
         print("Get the string representation of an instance\n\
@@ -171,6 +170,30 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
+    def default(self, line):
+        """Accept class name followed by command."""
+        args = line.split(".")
+        class_args = args[0]
+        if len(args) == 1:
+            print("** Unknown syntax: {}".format(line))
+            return
+        try:
+            args1 = args[1].split("(")
+            command = args1[0]
+            if command == "all":
+                self.do_all(class_args)
+            else:
+                pass
+        except IndexError:
+            print("** Unknown syntax: {}".format(line))
+            return
+
+    def help_default(self):
+        """Help for default command."""
+        print("Accept class name followed by command")
+        print(">>> <class name>.<command>")
+        print("Example: BaseModel.all()")
 
 
 if __name__ == '__main__':
