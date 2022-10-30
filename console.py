@@ -182,7 +182,7 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """Accept class name followed by command."""
-        args = line.split(".")
+        args = line.split(".", 1)
         class_args = args[0]
         if len(args) == 1:
             print("** Unknown syntax: {}".format(line))
@@ -195,11 +195,36 @@ class HBNBCommand(cmd.Cmd):
             elif command == "count":
                 self.do_count(class_args)
             elif command == "show":
-                self.do_show(class_args + " " + args1[1][:-1])
+                args = args1[1].split(')')
+                id_arg = args[0]
+                id_arg = id_arg.strip("'")
+                id_arg = id_arg.strip('"')
+                arg = class_args + " " + id_arg
+                self.do_show(arg)
             elif command == "destroy":
-                self.do_destroy(class_args + " " + args1[1][:-1])
-            elif command == "update":  # -- Doesn't work!!
-                self.do_update(class_args + " " + args1[1][:-1])
+                args = args1[1].split(')')
+                id_arg = args[0]
+                id_arg = id_arg.strip("'")
+                id_arg = id_arg.strip('"')
+                arg = class_args + " " + id_arg
+                self.do_destroy(arg)
+            elif command == "update":
+                args = args1[1].split(')')
+                args = args[0].split(',')
+                id_arg = args[0]
+                id_arg = id_arg.strip("'")
+                id_arg = id_arg.strip('"')
+                attr_name = args[1]
+                attr_name = attr_name.strip()
+                attr_name = attr_name.strip("'")
+                attr_name = attr_name.strip('"')
+                attr_value = args[2]
+                attr_value = attr_value.strip()
+                attr_value = attr_value.strip("'")
+                attr_value = attr_value.strip('"')
+                arg = class_args + " " + id_arg + " " + attr_name + " " + \
+                    attr_value
+                self.do_update(arg)
             else:
                 pass
         except IndexError:

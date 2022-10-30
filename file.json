@@ -9,14 +9,6 @@
         "first_name": "Betty",
         "__class__": "BaseModel"
     },
-    "BaseModel.cdb78dbe-5151-4b72-9a88-241cceb0877d": {
-        "id": "cdb78dbe-5151-4b72-9a88-241cceb0877d",
-        "created_at": "2022-10-27T01:51:09.549008",
-        "updated_at": "2022-10-27T01:51:09.549032",
-        "name": "My_First_Model",
-        "my_number": 89,
-        "__class__": "BaseModel"
-    },
     "BaseModel.61346ab9-3ad9-455c-9c7e-445b56b1d861": {
         "id": "61346ab9-3ad9-455c-9c7e-445b56b1d861",
         "created_at": "2022-10-28T00:04:41.054158",
@@ -27,6 +19,7 @@
         "id": "20ee490d-5dbb-4338-bef1-6fdf0cf23326",
         "created_at": "2022-10-28T00:41:38.917033",
         "updated_at": "2022-10-28T00:41:38.917033",
+        "email": "name@email",
         "__class__": "User"
     },
     "Place.498e6c25-40c9-47ce-aa76-6a51f667dc06": {
@@ -34,13 +27,6 @@
         "created_at": "2022-10-28T23:07:22.499633",
         "updated_at": "2022-10-28T23:07:22.499633",
         "__class__": "Place"
-    },
-    "State.b510e841-b9cf-437f-b154-f9ce4246561d": {
-        "id": "b510e841-b9cf-437f-b154-f9ce4246561d",
-        "created_at": "2022-10-30T00:32:58.222506",
-        "updated_at": "2022-10-30T00:32:58.222506",
-        "email": "new@email.com",
-        "__class__": "State"
     },
     "City.dbdce1e0-f735-41e5-adb2-49cab73076e8": {
         "id": "dbdce1e0-f735-41e5-adb2-49cab73076e8",
@@ -52,12 +38,14 @@
         "id": "6d1d63df-3e25-47a0-ae68-f0fefb9edafb",
         "created_at": "2022-10-30T00:44:49.647597",
         "updated_at": "2022-10-30T00:44:49.647597",
+        "email": "name@email.com",
         "__class__": "Review"
     },
     "Review.65bdf94d-4cf2-4cbc-a2d4-501b26880c70": {
         "id": "65bdf94d-4cf2-4cbc-a2d4-501b26880c70",
         "created_at": "2022-10-30T00:44:52.007600",
         "updated_at": "2022-10-30T00:44:52.007600",
+        "email": "review@email",
         "__class__": "Review"
     }
 }
