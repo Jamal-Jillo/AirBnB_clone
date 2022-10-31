@@ -53,8 +53,8 @@ class HBNBCommand(cmd.Cmd):
             args = shlex.split(arg)
             if len(args) == 0:
                 print("** class name missing **")
-                return False
-            if args[0] in classes:
+                # return False
+            elif args[0] in classes:
                 print(eval(args[0])().id)
                 models.storage.save()
                 print("** Created successfully! **")
