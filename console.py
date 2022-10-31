@@ -49,15 +49,18 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """Create a new instance of a BaseModel."""
-        args = shlex.split(arg)
-        if len(args) == 0:
-            print("** class name missing **")
-            return False
-        if args[0] in classes:
-            print(eval(args[0])().id)
-            models.storage.save()
-            print("** Created successfully! **")
-        else:
+        try:
+            args = shlex.split(arg)
+            if len(args) == 0:
+                print("** class name missing **")
+                return False
+            if args[0] in classes:
+                print(eval(args[0])().id)
+                models.storage.save()
+                print("** Created successfully! **")
+            else:
+                print("** class doesn't exist **")
+        except Exception:
             print("** class doesn't exist **")
 
     def help_create(self):
