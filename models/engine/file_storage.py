@@ -47,20 +47,20 @@ class FileStorage:
         (__file_path) exists ; otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised).
         """
-        if exists(self.__file_path):
-            with open(self.__file_path, 'r') as jsonfile:
-                data = json.load(jsonfile)
-                for key in data:
-                    self.__objects[key] =\
-                        eval(data[key]["__class__"])(**data[key])
+        #if exists(self.__file_path):
+        #    with open(self.__file_path, 'r') as jsonfile:
+        #        data = json.load(jsonfile)
+        #        for key in data:
+        #            self.__objects[key] =\
+        #                eval(data[key]["__class__"])(**data[key])
 
             # Both of these work:
-        # try:
-        #    with open(self.__file_path) as f:
-        #        data = json.load(f)
-        #        for o in data.values():
-        #            class_name = o["__class__"]
-        #            del o["__class__"]
-        #            self.new(eval(class_name)(**o))
-        # except FileNotFoundError:
-        #    return
+        try:
+            with open(self.__file_path) as f:
+                data = json.load(f)
+                for o in data.values():
+                    class_name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(class_name)(**o))
+        except FileNotFoundError:
+            return
